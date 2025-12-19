@@ -35,6 +35,6 @@ public class PlayerMovement : MonoBehaviour
 
     void SidewaysMovement()
     {
-        _rb.AddForce(new Vector3(_sidewaysAmt * _moveSpeed, 0, 0));     // Add a force only in X direction.
-    }
+        _rb.AddForce(new Vector3(_sidewaysAmt * _moveSpeed, 0, 0));     // Add a force only in X direction. Time.deltaTime shouldn't be 
+    }                                                                   // multiplied when adding forces, forces aren't time-based
 }
