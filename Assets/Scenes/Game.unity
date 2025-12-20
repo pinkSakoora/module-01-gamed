@@ -762,8 +762,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adee2a5ca1c63ec7c8a83831d25cebfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnInterval: 3
-  _obstacle: {fileID: 2607593995549887915, guid: 3a75fd78a013129aa9dd6f8d7b591526, type: 3}
+  _spawnInterval: 1
+  _obstacleList:
+  - {fileID: 1075560385548736009, guid: 8a4c9b724bf63bbb19e7453fa9e1f2d3, type: 3}
+  - {fileID: 2731566364600999286, guid: 768f97e853aef4082a2479c9e4718d97, type: 3}
+  - {fileID: 3992203442569228245, guid: 7cea538b1b4e30b5ebd436e4b6782a9f, type: 3}
+  - {fileID: 1613068528585592833, guid: 9e766392635fe4cce8648f7eb1437fe6, type: 3}
+  - {fileID: 3259719251506043849, guid: 2f028a735dee987bb9d26f3e7dae8416, type: 3}
+  - {fileID: 8986094084255269263, guid: 57c85141b7e5fb0989e9770b72dc0723, type: 3}
+  - {fileID: 3080768075642775586, guid: 791748637ab1605529cbf50ce5a38159, type: 3}
+  - {fileID: 5967281266519202912, guid: a6568db29bf42258d9b026d78331f030, type: 3}
+  - {fileID: 5392733395743859932, guid: 10f0d6ec0c664d151887ca2f21525462, type: 3}
 --- !u!4 &1698303466
 Transform:
   m_ObjectHideFlags: 0

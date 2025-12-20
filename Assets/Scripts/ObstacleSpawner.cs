@@ -1,14 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
     /*
-        Generate a new _obstacle at transform.position every _spawnInterval seconds
+        Generate a new obstacle selected randomly from _obstacleList at transform.position every _spawnInterval seconds
     */
     [SerializeField] float _spawnInterval;
-    [SerializeField] GameObject _obstacle;
+    [SerializeField] List<GameObject> _obstacleList;
 
     private float _timeSinceSpawn = 0;
 
@@ -18,7 +19,8 @@ public class ObstacleSpawner : MonoBehaviour
         if (_timeSinceSpawn >= _spawnInterval)
         {
             _timeSinceSpawn = 0;
-            Instantiate(_obstacle, transform.position, Quaternion.identity);     // Create a new instance of _obstacle
-        }   
+            GameObject obstacle = _obstacleList[Random.Range(0,_obstacleList.Count)];   // Initialize obstacle within function instead of globally
+            Instantiate(obstacle, transform.position, Quaternion.identity);     // Create a new instance of _obstacle
+        }
     }
 }
