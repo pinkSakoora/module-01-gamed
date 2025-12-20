@@ -24,6 +24,6 @@ public class ObstacleMover : MonoBehaviour
 
     void MoveObstacle()             // Modifying the transforms directly instead of using a rigidbody is doable.
     {                               // Fetch current transform, subtract by _obstacleMoveSpeed
-        gameObject.transform.position = gameObject.transform.position - new Vector3(0, 0, _obstacleMoveSpeed * Time.deltaTime);
+        transform.position = transform.position - new Vector3(0, 0, _obstacleMoveSpeed * Time.deltaTime);
     }
 }
