@@ -57,8 +57,8 @@ As for naming, just keeping a brief description of what was changed is usually s
 
 ### New Input System
 The new Input System was made the default way to handle user inputs starting Unity 6. There still exists a [way to revert to the old Input Manager](https://www.youtube.com/shorts/FFHuSvU85Ho), but it is worthwhile to learn how to use the new Input System.
+- [How to use Unity's New INPUT System EASILY - BMo](https://youtu.be/HmXU4dZbaMw?si=TaGJ2v-NYTMWNaG7) - A quick guide on how to switch from Input Manager to Input System in your code \(which also doubles as a quick look into the Input System.\)
+- [Input System Tutorials - Unity](https://youtube.com/playlist?list=PLX2vGYjWbI0RpLvO3B7aH-ObfcOifMD20&si=0F2NNsCNtr7xAIXd) - A full playlist containing official tutorials from Unity itself, that goes in depth (perhaps too much) into setting up and using the Input System.
 
 ## This repository
 This section contains information and tidbits pertaining to this repository in particular. TBA.
-- [How to use Unity's New INPUT System EASILY - BMo](https://youtu.be/HmXU4dZbaMw?si=TaGJ2v-NYTMWNaG7) - A quick guide on how to switch from Input Manager to Input System in your code \(which also doubles as a quick look into the Input System.\)
-- [Input System Tutorials - Unity](https://youtube.com/playlist?list=PLX2vGYjWbI0RpLvO3B7aH-ObfcOifMD20&si=0F2NNsCNtr7xAIXd) - A full playlist containing official tutorials from Unity itself, that goes in depth (perhaps too much) into setting up and using the Input System.
