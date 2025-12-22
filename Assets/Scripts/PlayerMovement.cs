@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody _rb;                         // [SerializeField] forces a private property to show up in the Editor
     private float _sidewaysAmt;
     [SerializeField] float _moveSpeed;
+    [SerializeField] GameManager _gameManager;
 
     void OnEnable()                                         // Enable InputAction on enabling the script
     {
@@ -37,4 +38,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.AddForce(new Vector3(_sidewaysAmt * _moveSpeed, 0, 0));     // Add a force only in X direction. Time.deltaTime shouldn't be 
     }                                                                   // multiplied when adding forces, forces aren't time-based
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))    // If the collided object is tagged as an Obstacle...
+        {
+            _sidewaysAction.Disable();                      // ...disable movement...
+            _gameManager.OnDeath();                         // ...and call the OnDeath function of GameManager
+        }
+    }
 }
