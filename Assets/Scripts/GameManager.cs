@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] ObstacleSpawner _obstacleSpawner;
+    [SerializeField] GameObject _deathScreen;
     public bool IsDead;
     public void OnDeath()
     {
@@ -13,5 +15,12 @@ public class GameManager : MonoBehaviour
         {
             spawnedObstacleList[i].enabled = false;
         }
+        _deathScreen.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _deathScreen.SetActive(false);
     }
 }
