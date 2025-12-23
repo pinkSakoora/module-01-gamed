@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ObstacleMover : MonoBehaviour
 {
-    [SerializeField] float _obstacleMoveSpeed;
     private float _lifespan = 0;
     [SerializeField] float _maxLifespan;
+    [SerializeField] ObstacleSpawner _obstacleSpawner;
+
+    void Start()
+    {
+        _obstacleSpawner = FindAnyObjectByType<ObstacleSpawner>();
+    }
 
     void Update()
     {
@@ -24,6 +29,6 @@ public class ObstacleMover : MonoBehaviour
 
     void MoveObstacle()             // Modifying the transforms directly instead of using a rigidbody is doable.
     {                               // Fetch current transform, subtract by _obstacleMoveSpeed
-        transform.position = transform.position - new Vector3(0, 0, _obstacleMoveSpeed * Time.deltaTime);
+        transform.position = transform.position - new Vector3(0, 0, _obstacleSpawner.ObstacleMoveSpeed * Time.deltaTime);
     }
 }

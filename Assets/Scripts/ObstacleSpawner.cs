@@ -10,6 +10,7 @@ public class ObstacleSpawner : MonoBehaviour
     */
     [SerializeField] float _spawnInterval;
     [SerializeField] List<GameObject> _obstacleList;
+    public float ObstacleMoveSpeed;
 
     private float _timeSinceSpawn = 0;
 
