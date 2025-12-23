@@ -13,12 +13,17 @@ This project is still very much a _work in progress_! This means incomplete feat
   - [git basics](#git-basics)
   - [commiting](#committing)
   - [New Input System](#new-input-system)
+  - [TextMeshPro](#textmeshpro)
 - [This repository](#this-repository)
+  - [Variable naming style](#variable-naming-style)
+  - [Priority order while making the project](#priority-order-while-making-the-project)
+  - [Naming of commits](#naming-of-commits)
 
 ## Differences in Editors used
 The playlist uses Unity Editor `v5.5.0f3` (released on Nov 16, 2016), vs `v6000.0.064f1` (released on May 21, 2024) which is used in this project. That's nearly 8 years of difference, so there are a [LOT of differences](https://alpha.release-notes.ds.unity3d.com/search?from_release=5.5.0f3&to_release=6000.0.64f1) (3090 pages of it!) Of course, most of these won't make sense to the reader (or to me, honestly), so some of the noticeable changes are:  
 - A different editor UI
 - Usage of the New Input System in favor of Input Manager
+- TextMeshPro and the requirement of generating font atlases for new fonts
 - Other minor stuff \(such as MonoBehaviour Script being the default script you create within editor\)
 
 However, most of the stuff in the playlist are still conceptually the same, the only exception being the input system, which is covered in a later section.
@@ -60,5 +65,33 @@ The new Input System was made the default way to handle user inputs starting Uni
 - [How to use Unity's New INPUT System EASILY - BMo](https://youtu.be/HmXU4dZbaMw?si=TaGJ2v-NYTMWNaG7) - A quick guide on how to switch from Input Manager to Input System in your code \(which also doubles as a quick look into the Input System.\)
 - [Input System Tutorials - Unity](https://youtube.com/playlist?list=PLX2vGYjWbI0RpLvO3B7aH-ObfcOifMD20&si=0F2NNsCNtr7xAIXd) - A full playlist containing official tutorials from Unity itself, that goes in depth (perhaps too much) into setting up and using the Input System.
 
+### TextMeshPro
+TextMesh Pro is a replacement for old text systems in Unity, and it provides much higher text quality. However, it does require some setup to use.  
+
+To use TextMesh Pro assets, you need to go to GameObject \(or right click in the Hierarchy -> Create\) -> UI -> Text - TextMeshPro. When adding it for the first time, you'll be prompted to Import TMP Essentials, which you need to do to use TMP.  
+
+You cannot use your own fonts by just importing the .otf/.ttf with TMP. To use your own fonts, you need to go to Windows -> TextMeshPro -> Font Asset Creator. Then, you need to select your source font and click on Generate Font Atlas. After this, you need to Save it to anywhere within your project, and then it'll be available to use in your TextMeshPro texts.  
+
+You also need to import TMPro libraries \(`using TMPro;` at the start of your script\) if you wish to initialize a TMP variable in your scripts. The variable type is `TextMeshProUGUI`.
+
+- [A Beginner Guide to TEXTMESHPRO (Unity UI Tutorial) - SpeedTutor](https://youtu.be/bR0clpZvjXo?si=mAagXsCTmKOKMU9i)
+
 ## This repository
-This section contains information and tidbits pertaining to this repository in particular. TBA.
+This section contains information and tidbits pertaining to this repository in particular.
+
+### Variable naming style
+`camelCase` is used with a few exceptions:  
+1. Underscores \(\_\) are put before private variables initialized outside a function. \(`private float _myNumber`\)
+2. Public variables have their first letter capitalized as well \(`public int PublicInt`\)
+3. Constants are all capital snake case \(`public const float IMP_CONST = 6.8`\)  
+The goal of this style of naming is to make it easy to know what the accessibility of variable is (supposed to be) at a glance. eg. If a variable starts with an underscore and I find it in a different script than it was initialized, I would immediately know that either I've named the variable wrong, or I've accidentally set it to public.
+
+### Priority order while making the project
+The first main focus while making the project is to make a very rough prototype of the game, without putting heavy emphasis on code perfectness (though still trying to maintain some semblance of sanity) or visuals. Visuals, in fact, are to be made as basic as possible, such that it might even be unpleasant to look at. This is done to ensure that the core mechanics of the game are engaging enough to proceed, without relying a lot on visuals (which usually are time consuming to make.) The exception to this is obviously game ideas that are actually visuals dependent.  
+
+Once the core mechanics are deemed fun enough to keep on working, the next task is to refactor bad code as well as add more secondary and tertiary mechanics to enhance the experience. There is still little to no efforts applied towards visuals at this stage, for the aforementioned reasons.  
+
+Finally, the visual overhaul is done along with a lot of polish to the code, such as balancing values, finalizing constants and so on.
+
+### Naming of commits
+The commits are named while following Conventional Commits _very_ loosely \(breaking them most of the time.\) It's mostly the `subject: message` format followed along with the tense being imperative.
