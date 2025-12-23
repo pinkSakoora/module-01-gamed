@@ -1090,6 +1090,7 @@ MonoBehaviour:
   _rb: {fileID: 1624555119}
   _moveSpeed: 50
   _gameManager: {fileID: 1698303467}
+  _yThreshhold: -2
 --- !u!65 &1624555121
 BoxCollider:
   m_ObjectHideFlags: 0

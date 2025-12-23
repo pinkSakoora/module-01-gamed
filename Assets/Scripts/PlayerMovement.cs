@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float _sidewaysAmt;
     [SerializeField] float _moveSpeed;
     [SerializeField] GameManager _gameManager;
+    [SerializeField] float _yThreshhold;
 
     void OnEnable()                                         // Enable InputAction on enabling the script
     {
@@ -27,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()                                      // Apply physics manipulations in FixedUpdate() as it is called a fixed
     {                                                       // number of times per second, ensuring consistency across different framerates
         SidewaysMovement();
+        if (transform.position.y < _yThreshhold && !_gameManager.IsDead)
+        {
+            _sidewaysAction.Disable();
+            _gameManager.OnDeath();
+        }
     }
 
     void GetInput()
