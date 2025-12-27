@@ -6,6 +6,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] ObstacleSpawner _obstacleSpawner;
     [SerializeField] GameObject _deathScreen;
     public bool IsDead;
+    public static float TimeAlive = 0;
+
+    void Update()
+    {
+        if (!IsDead) 
+        {
+            TimeAlive += Time.deltaTime;
+        }
+    }
     public void OnDeath()
     {
         IsDead = true;
