@@ -7,11 +7,12 @@ public class CameraFollow : MonoBehaviour
     static readonly Vector3 CAMERA_OFFSET = new(0,1,-6);
     static readonly float INITIAL_CAMERA_FOV = 40f;
     static readonly float BASE_CAMERA_FOV = 60f;
+    static readonly float MAX_CAMERA_FOV = 80f;        // A sane amount
     private float _refVelocity = 0f;
 
     void Update()
     {
-        if (!GameManager.IsDead)
+        if (!GameManager.IsDead && _camera.fieldOfView < MAX_CAMERA_FOV)
         {
             _camera.fieldOfView = Mathf.SmoothDamp(_camera.fieldOfView, BASE_CAMERA_FOV * GameGlobals.TimeFactor, ref _refVelocity, 0.2f);
         }
