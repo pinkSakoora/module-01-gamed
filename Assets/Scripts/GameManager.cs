@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] ObstacleSpawner _obstacleSpawner;
     [SerializeField] GameObject _deathScreen;
-    [SerializeField] CameraFollow _camera;
     public static bool IsDead {get; private set;} = false;
     public static float TimeAlive {get; private set;} = 0;
 
