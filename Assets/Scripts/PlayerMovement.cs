@@ -6,9 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] InputAction _sidewaysAction;           // We're using the new Input System which is the default for new editor versions
     [SerializeField] Rigidbody _rb;                         // [SerializeField] forces a private property to show up in the Editor
     private float _sidewaysAmt;
-    [SerializeField] float _moveSpeed;
     [SerializeField] GameManager _gameManager;
-    [SerializeField] float _yThreshhold;
 
     void OnEnable()                                         // Enable InputAction on enabling the script
     {
@@ -28,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()                                      // Apply physics manipulations in FixedUpdate() as it is called a fixed
     {                                                       // number of times per second, ensuring consistency across different framerates
         SidewaysMovement();
-        if (transform.position.y < _yThreshhold && !_gameManager.IsDead)
+        if (transform.position.y < GameGlobals.Y_THRESHHOLD && !_gameManager.IsDead)
         {
             _sidewaysAction.Disable();
             _gameManager.OnDeath();
@@ -42,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     void SidewaysMovement()
     {
-        _rb.AddForce(new Vector3(_sidewaysAmt * _moveSpeed, 0, 0));     // Add a force only in X direction. Time.deltaTime shouldn't be 
+        _rb.AddForce(new Vector3(_sidewaysAmt * GameGlobals.MOVE_SPEED, 0, 0));     // Add a force only in X direction. Time.deltaTime shouldn't be 
     }                                                                   // multiplied when adding forces, forces aren't time-based
 
     void OnCollisionEnter(Collision collision)
