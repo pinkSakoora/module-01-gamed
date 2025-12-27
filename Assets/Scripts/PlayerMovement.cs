@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()                                      // Apply physics manipulations in FixedUpdate() as it is called a fixed
     {                                                       // number of times per second, ensuring consistency across different framerates
         SidewaysMovement();
-        if (transform.position.y < GameGlobals.Y_THRESHHOLD && GameManager.IsDead)
+        if (transform.position.y < GameGlobals.Y_THRESHHOLD && !GameManager.IsDead)
         {
             _sidewaysAction.Disable();
             _gameManager.OnDeath();
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     void SidewaysMovement()
     {
-        _rb.AddForce(new Vector3(_sidewaysAmt * GameGlobals.MOVE_SPEED, 0, 0));     // Add a force only in X direction. Time.deltaTime shouldn't be 
+        _rb.AddForce(new Vector3(_sidewaysAmt * GameGlobals.MOVE_SPEED, 0, 0), ForceMode.VelocityChange);     // Add a force only in X direction. Time.deltaTime shouldn't be 
     }                                                                   // multiplied when adding forces, forces aren't time-based
 
     void OnCollisionEnter(Collision collision)

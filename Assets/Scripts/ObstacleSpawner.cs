@@ -9,7 +9,12 @@ public class ObstacleSpawner : MonoBehaviour
     private float _spawnInterval => GameGlobals.OBSTACLE_LENGTH/(GameGlobals.OBSTACLE_MOVE_SPEED * GameGlobals.TimeFactor);
     [SerializeField] List<GameObject> _obstacleList;
 
-    private float _timeSinceSpawn = 0;
+    private float _timeSinceSpawn;
+
+    void Start()
+    {
+        _timeSinceSpawn = 0;
+    }
 
     void Update()
     {

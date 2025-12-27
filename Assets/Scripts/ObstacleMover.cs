@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class ObstacleMover : MonoBehaviour
 {
-    private float _lifespan = 0;
+    private float _lifespan;
     private float _maxLifespan = GameGlobals.OBSTACLE_SPAWN_POINT.z/(GameGlobals.OBSTACLE_MOVE_SPEED * GameGlobals.TimeFactor);
+
+    void Start()
+    {
+        _lifespan = 0;
+    }
 
     void Update()
     {
