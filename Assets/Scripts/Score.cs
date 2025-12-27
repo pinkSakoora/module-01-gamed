@@ -8,12 +8,11 @@ public class Score : MonoBehaviour
     */
     [SerializeField] TextMeshProUGUI _scoreText;
     [SerializeField] float _scoreFactor;
-    [SerializeField] GameManager _gameManager;
     void Update()
     {
-        if (!_gameManager.IsDead)
+        if (!GameManager.IsDead)
         {
-            _scoreText.text = (Time.timeSinceLevelLoad * GameGlobals.OBSTACLE_MOVE_SPEED * GameGlobals.TimeFactor * _scoreFactor).ToString("0");
+            _scoreText.text = (GameManager.TimeAlive * GameGlobals.OBSTACLE_MOVE_SPEED * GameGlobals.TimeFactor * _scoreFactor).ToString("0");
         }
     }
 }

@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()                                      // Apply physics manipulations in FixedUpdate() as it is called a fixed
     {                                                       // number of times per second, ensuring consistency across different framerates
         SidewaysMovement();
-        if (transform.position.y < GameGlobals.Y_THRESHHOLD && !_gameManager.IsDead)
+        if (transform.position.y < GameGlobals.Y_THRESHHOLD && GameManager.IsDead)
         {
             _sidewaysAction.Disable();
             _gameManager.OnDeath();
