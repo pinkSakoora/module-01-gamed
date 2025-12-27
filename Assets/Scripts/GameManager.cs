@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] ObstacleSpawner _obstacleSpawner;
     [SerializeField] GameObject _deathScreen;
     public static bool IsDead {get; private set;}
     public static float TimeAlive {get; private set;}
@@ -24,12 +23,6 @@ public class GameManager : MonoBehaviour
     public void OnDeath()
     {
         IsDead = true;
-        _obstacleSpawner.enabled = false;       // Disable this component to stop further spawning
-        var spawnedObstacleList = FindObjectsByType<ObstacleMover>(FindObjectsSortMode.None);   // Make a list of all objects containing ObstacleMover
-        for (int i = 0; i < spawnedObstacleList.Length; i++)                                    // component (all obstacles) and disable all of them
-        {
-            spawnedObstacleList[i].enabled = false;
-        }
         _deathScreen.SetActive(true);
     }
 

@@ -12,16 +12,27 @@ public class ObstacleMover : MonoBehaviour
 
     void Update()
     {
-        _lifespan += Time.deltaTime;
-        if (_lifespan >= _maxLifespan)
+        if (!GameManager.IsDead)
         {
-            Destroy(gameObject);                // Destroy current obstacle when its _lifespan is above _maxLifespan
+            DespawnObstacles();
         }
     }
 
     void FixedUpdate()
     {
-        MoveObstacle();
+        if (!GameManager.IsDead)
+        {
+            MoveObstacle();
+        }
+    }
+
+    void DespawnObstacles()
+    {
+        _lifespan += Time.deltaTime;
+        if (_lifespan >= _maxLifespan)
+        {
+            Destroy(gameObject);                // Destroy current obstacle when its _lifespan is above _maxLifespan
+        }
     }
 
     void MoveObstacle()             // Modifying the transforms directly instead of using a rigidbody is doable.

@@ -18,12 +18,15 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Update()
     {
-        _timeSinceSpawn += Time.deltaTime;
-        if (_timeSinceSpawn >= _spawnInterval)
+        if (!GameManager.IsDead)
         {
-            _timeSinceSpawn = 0;
-            GameObject obstacle = _obstacleList[Random.Range(0,_obstacleList.Count)];   // Initialize obstacle within function instead of globally
-            Instantiate(obstacle, GameGlobals.OBSTACLE_SPAWN_POINT, Quaternion.identity);     // Create a new instance of _obstacle
+            _timeSinceSpawn += Time.deltaTime;
+            if (_timeSinceSpawn >= _spawnInterval)
+            {
+                _timeSinceSpawn = 0;
+                GameObject obstacle = _obstacleList[Random.Range(0,_obstacleList.Count)];   // Initialize obstacle within function instead of globally
+                Instantiate(obstacle, GameGlobals.OBSTACLE_SPAWN_POINT, Quaternion.identity);     // Create a new instance of _obstacle
+            }
         }
     }
 }
