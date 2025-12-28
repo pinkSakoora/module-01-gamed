@@ -2,16 +2,31 @@ using UnityEngine;
 
 public class ObstacleMover : MonoBehaviour
 {
-    private float _lifespan = 0;
-    [SerializeField] float _maxLifespan;
-    [SerializeField] ObstacleSpawner _obstacleSpawner;
+    private float _lifespan;
+    private float _maxLifespan = GameGlobals.OBSTACLE_SPAWN_POINT.z/(GameGlobals.OBSTACLE_MOVE_SPEED * GameGlobals.TimeFactor);
 
     void Start()
     {
-        _obstacleSpawner = FindAnyObjectByType<ObstacleSpawner>();
+        _lifespan = 0;
     }
 
     void Update()
+    {
+        if (!GameManager.IsDead)
+        {
+            DespawnObstacles();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!GameManager.IsDead)
+        {
+            MoveObstacle();
+        }
+    }
+
+    void DespawnObstacles()
     {
         _lifespan += Time.deltaTime;
         if (_lifespan >= _maxLifespan)
@@ -20,13 +35,8 @@ public class ObstacleMover : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        MoveObstacle();
-    }
-
     void MoveObstacle()             // Modifying the transforms directly instead of using a rigidbody is doable.
     {                               // Fetch current transform, subtract by _obstacleMoveSpeed
-        transform.position = transform.position - new Vector3(0, 0, _obstacleSpawner.ObstacleMoveSpeed * Time.deltaTime);
+        transform.position = transform.position - new Vector3(0, 0, GameGlobals.OBSTACLE_MOVE_SPEED * Time.deltaTime * GameGlobals.TimeFactor);
     }
 }
